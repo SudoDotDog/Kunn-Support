@@ -1,18 +1,4 @@
 {
-  "description": ":octopus: Language support",
-  "directories": {
-    "doc": "docs"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SudoDotDog/Kunn-Core.git"
-  },
-  "author": "WMXPY",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/SudoDotDog/Kunn-Core/issues"
-  },
-  "homepage": "https://github.com/SudoDotDog/Kunn-Core#readme",
   "dependencies": {
     "@sudoo/bark": "^2.6.1"
   },

@@ -1,0 +1,26 @@
+{
+    "name": "@kunn/typescript",
+    "version": "0.0.1",
+    "description": ":octopus: Typescript Language support for Kunn",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/SudoDotDog/Kunn-Support.git"
+    },
+    "keywords": [
+        "Kunn",
+        "TypeScript"
+    ],
+    "author": "WMXPY",
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/SudoDotDog/Kunn-Support/issues"
+    },
+    "homepage": "https://github.com/SudoDotDog/Kunn-Support#readme",
+    "dependencies": {
+      "@sudoo/bark": "^2.6.1"
+    },
+    "peerDependencies": {
+      "@kunn/core": "^0.0.2"
+    }
+  }
+  

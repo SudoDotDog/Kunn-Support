@@ -7,17 +7,17 @@
 import { GestureBuffer, KunnBodyRequest, KunnData, KunnRoute, Line, PROTOCOL, TYPE } from "@kunn/core";
 import { _Map } from "@sudoo/bark/map";
 
-export const createSimple = (text: string, nest: number): Line => ({
+const createSimple = (text: string, nest: number): Line => ({
     text,
     nest,
 });
 
-export const parseProtocolToString = (protocol: PROTOCOL) => {
+const parseProtocolToString = (protocol: PROTOCOL) => {
 
     return `${protocol[0].toUpperCase()}${protocol.toLowerCase().substring(1)}`;
 };
 
-export const generateNamespace = (route: KunnRoute) => {
+const generateNamespace = (route: KunnRoute) => {
 
     const parsedPath: string[] = route.path
         .split('/')

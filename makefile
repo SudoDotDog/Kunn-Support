@@ -7,8 +7,6 @@ tsc := node_modules/.bin/tsc
 ts_node := node_modules/.bin/ts-node
 mocha := node_modules/.bin/mocha
 
-.IGNORE: clean-linux
-
 main: run
 
 run:
@@ -39,21 +37,26 @@ install-prod:
 	@echo "[INFO] Installing Dependencies"
 	@yarn install --production=true
 
-license: clean
+license-typescript: clean-typescript
 	@echo "[INFO] Sign files"
-	@NODE_ENV=development $(ts_node) script/license.ts
+	@NODE_ENV=development $(ts_node) script/license.ts typescript
 
-clean: clean-linux
+clean-typescript:
 	@echo "[INFO] Cleaning release files"
-	@NODE_ENV=development $(ts_node) script/clean-app.ts
+	@NODE_ENV=development $(ts_node) script/clean-app.ts typescript
 
-clean-linux:
-	@echo "[INFO] Cleaning dist files"
-	@rm -rf dist
-	@rm -rf dist_script
-	@rm -rf .nyc_output
-	@rm -rf coverage
-
-publish: install tests license build
+publish-typescript: install tests license-typescript build
 	@echo "[INFO] Publishing package"
-	@cd app && npm publish --access=public
+	@cd app/typescript && npm publish --access=public
+
+license-go: clean-go
+	@echo "[INFO] Sign files"
+	@NODE_ENV=development $(ts_node) script/license.ts go
+
+clean-go:
+	@echo "[INFO] Cleaning release files"
+	@NODE_ENV=development $(ts_node) script/clean-app.ts go
+
+publish-go: install tests license-go build
+	@echo "[INFO] Publishing package"
+	@cd app/go && npm publish --access=public

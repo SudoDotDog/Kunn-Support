@@ -7,9 +7,17 @@
 import * as Fs from 'fs';
 import * as Path from 'path';
 
-const appPath: string = Path.join(__dirname, '..', 'app');
+const name: string = process.argv[2];
+
+const appPath: string = Path.join(__dirname, '..', 'app', name);
+
+const exist: boolean = Fs.existsSync(appPath);
+if (!exist) {
+    Fs.mkdirSync(appPath);
+}
+
 const licensePath: string = Path.join(__dirname, '..', 'LICENSE');
-const packagePath: string = Path.join(__dirname, '..', 'package.json');
+const packagePath: string = Path.join(__dirname, '..', 'package', `${name}.json`);
 
 const license: string = Fs.readFileSync(licensePath, 'utf8');
 Fs.writeFileSync(Path.join(appPath, 'LICENSE'), license, 'utf8');
@@ -27,5 +35,6 @@ const appPackage: any = {
     bugs: parent.bugs,
     homepage: parent.homepage,
     dependencies: parent.dependencies,
+    peerDependencies: parent.peerDependencies,
 };
 Fs.writeFileSync(Path.join(appPath, 'package.json'), JSON.stringify(appPackage, null, 2), 'utf8');
