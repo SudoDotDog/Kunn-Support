@@ -4,13 +4,29 @@
  * @description Go
  */
 
+import { GestureBuffer, KunnBodyRequest, KunnData, KunnRoute, Line, PROTOCOL, TYPE } from "@kunn/core";
 import { _Map } from "@sudoo/bark/map";
-import { PROTOCOL, TYPE } from "../declare/declare";
-import { KunnData } from "../declare/exchange";
-import { KunnBodyRequest, KunnRoute } from "../declare/route";
-import { GestureBuffer } from "./buffer";
-import { Line } from "./declare";
-import { createSimple, generateNamespace } from "./util";
+
+export const createSimple = (text: string, nest: number): Line => ({
+    text,
+    nest,
+});
+
+export const parseProtocolToString = (protocol: PROTOCOL) => {
+
+    return `${protocol[0].toUpperCase()}${protocol.toLowerCase().substring(1)}`;
+};
+
+export const generateNamespace = (route: KunnRoute) => {
+
+    const parsedPath: string[] = route.path
+        .split('/')
+        .filter(Boolean)
+        .map((value: string) => value.replace(/ /g, ''));
+
+    return `${parseProtocolToString(route.protocol)}_${parsedPath.join('_')}`;
+};
+
 
 export const generateGoLangTypeKeyedDefinition = (name: string, data: KunnData, nest: number): Line[] => {
 

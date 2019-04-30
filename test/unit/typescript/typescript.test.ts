@@ -5,11 +5,10 @@
  * @override Unit
  */
 
+import { KunnData, KunnRoute, Line, PROTOCOL, TYPE } from "@kunn/core";
 import { expect } from "chai";
 import * as Chance from "chance";
-import { KunnData, KunnRoute, PROTOCOL, TYPE } from "../../../src";
-import { Line } from "../../../src/gesture/declare";
-import { generateTypeScriptGesture, generateTypeScriptTypeDefinition } from "../../../src/gesture/typescript";
+import { generateTypeScriptGesture, generateTypeScriptTypeDefinition } from "../../../src/typescript/typescript";
 
 describe('Given [TypescriptTypeDefinition] generator method', (): void => {
 

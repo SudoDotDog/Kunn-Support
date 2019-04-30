@@ -5,11 +5,10 @@
  * @override Unit
  */
 
+import { KunnData, KunnRoute, Line, PROTOCOL, TYPE } from "@kunn/core";
 import { expect } from "chai";
 import * as Chance from "chance";
-import { KunnData, KunnRoute, PROTOCOL, TYPE } from "../../../src";
-import { Line } from "../../../src/gesture/declare";
-import { generateGoLangGesture, generateGoLangTypeDefinition } from "../../../src/gesture/go";
+import { generateGoLangGesture, generateGoLangTypeDefinition } from "../../../src/go/go";
 
 describe('Given [GoLangTypeDefinition] generator method', (): void => {
 

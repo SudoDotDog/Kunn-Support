@@ -17,7 +17,7 @@
     "@sudoo/bark": "^2.6.1"
   },
   "devDependencies": {
-    "@kunn/core": "^0.0.1",
+    "@kunn/core": "^0.0.2",
     "@sudoo/io": "^1.6.0",
     "@sudoo/triforce": "^1.6.0"
   },

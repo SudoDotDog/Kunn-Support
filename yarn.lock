@@ -18,10 +18,10 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@kunn/core@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@kunn/core/-/core-0.0.1.tgz#bece0bc37bdbcb9f1f4a0a3f5421df12117ba0e2"
-  integrity sha512-Rg2los609TtsWWMviwkB79zIomBT2PHdXG9XJxwSFl4PSyAfFZxHwsBQOuFIkfhnKYC2Sih5KTqzi1IuUDg0mA==
+"@kunn/core@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@kunn/core/-/core-0.0.2.tgz#029f8e4b6077000652cd30dc780c77fdac74e3fc"
+  integrity sha512-WkhA9WDS0fSoptJZ6B5e7Pan+mt+rNjapJY7FQzYALcC9sURyss1oGgFi1uVMoHsffOIRY1fhj1ODALGtUa1Gw==
   dependencies:
     "@sudoo/bark" "^2.6.1"
     chance "^1.0.18"
