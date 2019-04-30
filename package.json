@@ -1,0 +1,42 @@
+{
+  "description": ":octopus: Language support",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SudoDotDog/Kunn-Core.git"
+  },
+  "author": "WMXPY",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SudoDotDog/Kunn-Core/issues"
+  },
+  "homepage": "https://github.com/SudoDotDog/Kunn-Core#readme",
+  "dependencies": {
+    "@sudoo/bark": "^2.6.1"
+  },
+  "devDependencies": {
+    "@kunn/core": "^0.0.1",
+    "@sudoo/io": "^1.6.0",
+    "@sudoo/triforce": "^1.6.0"
+  },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "include": [
+      "src/**/*.ts"
+    ],
+    "instrument": true,
+    "reporter": [
+      "json",
+      "text-summary"
+    ],
+    "report-dir": "coverage",
+    "require": [
+      "./test/tshook.js"
+    ],
+    "sourceMap": true
+  }
+}

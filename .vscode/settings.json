@@ -1,0 +1,17 @@
+{
+    "cSpell.words": [
+        "RMRF",
+        "Validatable",
+        "WMXPY",
+        "codecov",
+        "connor",
+        "kunn",
+        "struct",
+        "sudoo",
+        "triforce",
+        "tshook"
+    ],
+    "tslint.configFile": "typescript/tslint.json",
+    "javascript.preferences.importModuleSpecifier": "auto",
+    "typescript.preferences.importModuleSpecifier": "auto"
+}
