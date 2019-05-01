@@ -1,6 +1,6 @@
 {
     "name": "@kunn/typescript",
-    "version": "0.0.2",
+    "version": "0.1.0",
     "description": ":octopus: Typescript Language support for Kunn",
     "repository": {
       "type": "git",
