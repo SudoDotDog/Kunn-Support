@@ -29,7 +29,15 @@ const generateNamespace = (route: KunnRoute) => {
 
 const isElementSimple = (element: KunnData): boolean => {
 
-    return [TYPE.FLOAT, TYPE.INTEGER, TYPE.STRING].includes(element.type);
+    if ([TYPE.FLOAT, TYPE.INTEGER, TYPE.STRING].includes(element.type)) {
+        return true;
+    }
+
+    if (element.type === TYPE.ARRAY && isElementSimple(element.element)) {
+        return true;
+    }
+
+    return false;
 };
 
 export const generateTypeScriptTypeKeyedDefinition = (name: string, data: KunnData, nest: number): Line[] => {
