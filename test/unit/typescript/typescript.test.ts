@@ -107,6 +107,70 @@ describe('Given [TypescriptTypeDefinition] generator method', (): void => {
         }]);
     });
 
+    it('should be able to handle simple array', (): void => {
+
+        const data: KunnData = {
+            type: TYPE.ARRAY,
+            element: {
+                type: TYPE.STRING,
+            },
+        };
+
+        const result: Line[] = generateTypeScriptTypeDefinition(data, 0);
+
+        expect(result).to.be.deep.equal([{
+            text: 'string[]',
+            nest: 0,
+        }]);
+    });
+
+    it('should be able to handle deep simple array', (): void => {
+
+        const data: KunnData = {
+            type: TYPE.ARRAY,
+            element: {
+                type: TYPE.ARRAY,
+                element: {
+                    type: TYPE.FLOAT,
+                },
+            },
+        };
+
+        const result: Line[] = generateTypeScriptTypeDefinition(data, 0);
+
+        expect(result).to.be.deep.equal([{
+            text: 'number[][]',
+            nest: 0,
+        }]);
+    });
+
+    it('should be able to handle complex array', (): void => {
+
+        const data: KunnData = {
+            type: TYPE.ARRAY,
+            element: {
+                type: TYPE.OBJECT,
+                map: {},
+            },
+        };
+
+        const result: Line[] = generateTypeScriptTypeDefinition(data, 0);
+
+        expect(result).to.be.deep.equal([{
+            text: 'Array<',
+            nest: 0,
+        }, {
+            text: '{',
+            nest: 1,
+        }, {
+            text: '}',
+            nest: 1,
+        }, {
+            text: '>',
+            nest: 0,
+        }]);
+    });
+
     it('should be able to generate optional nested type definition', (): void => {
 
         const key1: string = chance.string();
