@@ -40,13 +40,7 @@ describe('Given [TypescriptTypeDefinition] generator method', (): void => {
         const result: Line[] = generateTypeScriptTypeDefinition(data, 0);
 
         expect(result).to.be.deep.equal([{
-            text: 'Array<',
-            nest: 0,
-        }, {
-            text: 'string',
-            nest: 1,
-        }, {
-            text: '>',
+            text: 'string[]',
             nest: 0,
         }]);
     });
@@ -198,13 +192,7 @@ describe('Given [TypescriptTypeDefinition] generator method', (): void => {
             text: '{',
             nest: 2,
         }, {
-            text: `readonly ${key1}: Array<`,
-            nest: 3,
-        }, {
-            text: 'string',
-            nest: 4,
-        }, {
-            text: '>;',
+            text: `readonly ${key1}: string[];`,
             nest: 3,
         }, {
             text: '}',
@@ -273,6 +261,6 @@ describe('Given [TypescriptGesture] generator method', (): void => {
 
         const result: string = generateTypeScriptGesture(data);
 
-        expect(result).to.be.equal(`export declare namespace Post_test {\n    export type Query = {\n        readonly ${key1}: string;\n    };\n    export type Body = {\n        readonly ${key2}: Array<\n            number\n        >;\n    };\n    export type Response = {\n        readonly ${key3}: {\n            readonly ${key1}: Array<\n                number\n            >;\n        };\n    };\n}`);
+        expect(result).to.be.equal(`export declare namespace Post_test {\n    export type Query = {\n        readonly ${key1}: string;\n    };\n    export type Body = {\n        readonly ${key2}: number[];\n    };\n    export type Response = {\n        readonly ${key3}: {\n            readonly ${key1}: number[];\n        };\n    };\n}`);
     });
 });
