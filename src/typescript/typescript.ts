@@ -27,6 +27,11 @@ const generateNamespace = (route: KunnRoute) => {
     return `${parseProtocolToString(route.protocol)}_${parsedPath.join('_')}`;
 };
 
+const isElementSimple = (element: KunnData): boolean => {
+
+    return [TYPE.FLOAT, TYPE.INTEGER, TYPE.STRING].includes(element.type);
+};
+
 export const generateTypeScriptTypeKeyedDefinition = (name: string, data: KunnData, nest: number): Line[] => {
 
     const lines: Line[] = generateTypeScriptTypeDefinition(data, nest);
@@ -56,17 +61,30 @@ export const generateTypeScriptTypeDefinition = (data: KunnData, nest: number): 
         case TYPE.INTEGER: return [createSimple('number', nest)];
         case TYPE.STRING: return [createSimple('string', nest)];
 
-        case TYPE.ARRAY: return [
-            {
-                text: 'Array<',
-                nest,
-            },
-            ...generateTypeScriptTypeDefinition(data.element, nest + 1),
-            {
-                text: '>',
-                nest,
-            },
-        ];
+        case TYPE.ARRAY: {
+
+            if (isElementSimple(data.element)) {
+                const simple: Line[] = generateTypeScriptTypeDefinition(data.element, nest);
+                const first: Line = simple[0] as Line;
+                simple[0] = {
+                    text: `${first.text}[]`,
+                    nest: first.nest,
+                };
+                return simple;
+            }
+
+            return [
+                {
+                    text: 'Array<',
+                    nest,
+                },
+                ...generateTypeScriptTypeDefinition(data.element, nest + 1),
+                {
+                    text: '>',
+                    nest,
+                },
+            ];
+        }
 
         case TYPE.OBJECT: {
 
